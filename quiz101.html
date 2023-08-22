@@ -42,13 +42,7 @@ function byId(sid){
                 return num + array2[idx];
             });
         }
-        function traslacion(){
-            //leer datos de vo
-            var aos = document.getElementById('vo').value;
-            aon=strarr2num(aos,','); 
-            atn=strarr2num(byId('vt'),',');
-            document.getElementById('vr').value = sum(aon,atn)
-        }
+        
 
         function vertices(lado, altura) {
             return [
@@ -62,7 +56,7 @@ function byId(sid){
         }
         function traslacionPiramide(matrVert, vt){
             vector.push(1);
-            const result = [0, 0, 0, 0];
+            const result = [0, 0, 0];
             for (let i = 0; i < 3; i++){
                 for (let j = 0; j < 3; j++){
                     result[i] += vt[j] * matrVert[i][j];
@@ -72,14 +66,24 @@ function byId(sid){
             return result.slice(0, 3);
 
         }
-
-function traslacion(){
-    lado = document.getElementById('width').value
-    ancho = document.getElementById('height').value
-    arreglo = strarr2num()
-    document.getElementById('vr').value 
-}
-
+        function crearTransformacionMatriz(ValorTransformacion){
+            const matriz = [
+                [0, 0, 0]
+                [0, 0, ValorTransformacion[0]],
+                [0, 0, ValorTransformacion[1]],
+                [0, 0, ValorTransformacion[2]],
+                [0, 0, 0]
+                
+            ];
+            return matriz;
+        }
+        function traslacion(){
+                    lado = document.getElementById('widht').value;
+                    altura = document.getElementById('heigth').value;
+                    arreglo = strarr2num (byId('vt'), ',');
+                    document.getElementById('vert_ini').value = mostrar(vertices(lado,altura))
+                    document.getElementById('vert_end').value = applyTransformacion(crearTransformacionMatriz(atn), aon).join(', ');
+                }
 
 </Script>
 </head>
