@@ -26,21 +26,60 @@ un resultado según se orienta en la imagen adjunta.
 <html>
 <head>
 <script>
-function vertices(lado, altura) {
-    return [
-        [0,0,0],
-        [lado,0,0],
-        [lado,0,lado],
-        [0,0,lado],
-        [1/2*lado,altura,1/2*lado]
-    ]
+function byId(sid){
+            return document.getElementById(sid).value
+        }
+        function strarr2num(strarr,lim){
+            arrs = strarr.split(lim)
+            arrn=[]; //crea array con vacio
+            arrs.forEach((elem) => {
+                arrn.push(Number(elem))   
+            });  
+            return arrn;
+        }
+        function sum(array1,array2){
+            return array1.map(function(num, idx){
+                return num + array2[idx];
+            });
+        }
+        function traslacion(){
+            //leer datos de vo
+            var aos = document.getElementById('vo').value;
+            aon=strarr2num(aos,','); 
+            atn=strarr2num(byId('vt'),',');
+            document.getElementById('vr').value = sum(aon,atn)
+        }
 
+        function vertices(lado, altura) {
+            return [
+                [0,0,0],
+                [lado,0,0],
+                [lado,0,lado],
+                [0,0,lado],
+                [lado/2,altura,lado/2]
+            ]
+
+        }
+        function traslacionPiramide(matrVert, vt){
+            vector.push(1);
+            const result = [0, 0, 0, 0];
+            for (let i = 0; i < 3; i++){
+                for (let j = 0; j < 3; j++){
+                    result[i] += vt[j] * matrVert[i][j];
+                } 
+            }
+            vector.pop();
+            return result.slice(0, 3);
+
+        }
+
+function traslacion(){
+    lado = document.getElementById('width').value
+    ancho = document.getElementById('height').value
+    arreglo = strarr2num()
+    document.getElementById('vr').value 
 }
-function traslacionPiramide(matrVert, vt){
-    
 
-
-}
 
 </Script>
 </head>
